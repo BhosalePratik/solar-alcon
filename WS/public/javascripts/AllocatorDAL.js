@@ -17,7 +17,7 @@ AllocatorDAL.allocateHeater = function (solarHeater) {
     var purchaseDate = utility.formatDate(solarHeater.purchaseDate);
     var installDate = utility.formatDate(solarHeater.installationDate);
     return connection.getConnection().then(function (db) {
-        var myCollection = db.collection('solarHeateralcon');
+        var myCollection = db.collection('solarHeaterAlcon');
         return AllocatorDAL.generateId().then(function (sId) {
             return myCollection.insert({
                 "solarHeaterId": sId,
@@ -39,10 +39,20 @@ AllocatorDAL.allocateHeater = function (solarHeater) {
 
 generateId = function () {
     return connection.getConnection().then(function (db) {
-        var myCollection = db.collection('solarHeateralcon');
+        var myCollection = db.collection('solarHeaterAlcon');
         return myCollection.distinct("solarHeaterId").then(function (ids) {
             var maxSolarId = Math.max(...ids);
             return maxSolarId + 1;
+        })
+    })
+};
+
+AllocatorDAL.getAllBooking = function () {
+    return connection.getConnection().then(function (db) {
+        return db.collection('solarHeaterAlcon').find().toArray().then(function (allAllocations) {
+            return allAllocations;
+        }).catch(function (err) {
+            return err;
         })
     })
 };

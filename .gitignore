@@ -1,2 +1,4 @@
 UI/node_modules/*
 WS/node_modules/*
+WS/ErrorLogger.txt
+WS/RequestLogger.txt

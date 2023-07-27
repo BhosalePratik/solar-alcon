@@ -22,4 +22,12 @@ AllocatorBL.allocate = function(solarHeater) {
     });
 };
 
+AllocatorBL.getAllBooking = function () {
+    return AllocatorDAL.getAllBooking().then(function (allAllocations) {
+        return allAllocations;
+    }).catch(function (err) {
+        return err;
+    })
+}; 
+
 module.exports = AllocatorBL;

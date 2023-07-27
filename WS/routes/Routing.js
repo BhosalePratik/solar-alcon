@@ -12,4 +12,12 @@ routing.post('/allocate', function(req, res, next) {
     })
 });
 
+routing.get('/getallocations', function(req, res, next) {
+    AllocatorBL.getAllBooking().then(function (allocations) {
+        res.json(allocations);
+    }).catch(function (err) {
+        next(err);
+    })
+});
+
 module.exports = routing;
