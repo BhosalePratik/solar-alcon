@@ -20,4 +20,12 @@ routing.get('/getallocations', function(req, res, next) {
     })
 });
 
+routing.get('/getSolarHeaterIds', function (req, res, next) {
+    AllocatorBL.getSolarHeaterIds().then(function (ids) {
+        res.json(ids);
+    }).catch(function (err) {
+        next(err);
+    })
+})
+
 module.exports = routing;

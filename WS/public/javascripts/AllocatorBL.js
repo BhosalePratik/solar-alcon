@@ -28,6 +28,16 @@ AllocatorBL.getAllBooking = function () {
     }).catch(function (err) {
         return err;
     })
-}; 
+};
+
+AllocatorBL.getSolarHeaterIds = function () {
+    return AllocatorDAL.getSolarHeaterIds().then(function (ids) {
+        if (ids == null) {
+            throw new Error("Error in fetching Solar Heater Ids!");
+        } else {
+            return ids;
+        }
+    })
+};
 
 module.exports = AllocatorBL;

@@ -57,4 +57,12 @@ AllocatorDAL.getAllBooking = function () {
     })
 };
 
+AllocatorDAL.getSolarHeaterIds = function () {
+    return connection.getConnection().then(function (db) {
+        return db.collection('solarHeaterAlcon').distinct("solarHeaterId").then(function (solarHeaterIds) {
+            return solarHeaterIds;
+        })
+    })
+};
+ 
 module.exports = AllocatorDAL;
