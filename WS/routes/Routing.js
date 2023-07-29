@@ -26,6 +26,14 @@ routing.get('/getSolarHeaterIds', function (req, res, next) {
     }).catch(function (err) {
         next(err);
     })
-})
+});
+
+routing.get('/getHeaterById/:id', function(req, res, next) {
+    AllocatorBL.getDataOfId(req.params.id).then(function (data) {
+        res.json(data);
+    }).catch(function (err) {
+        next(err);
+    })
+});
 
 module.exports = routing;

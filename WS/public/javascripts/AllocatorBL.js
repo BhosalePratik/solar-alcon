@@ -40,4 +40,14 @@ AllocatorBL.getSolarHeaterIds = function () {
     })
 };
 
+AllocatorBL.getDataOfId = function(sId) {
+    return AllocatorDAL.getDataOfId(Number(sId)).then(function (data) {
+        if (data == null) {
+            throw new Error("Error in fetching data for " + sId);
+        } else {
+            return data;
+        }
+    })
+};
+
 module.exports = AllocatorBL;

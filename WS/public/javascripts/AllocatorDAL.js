@@ -64,5 +64,14 @@ AllocatorDAL.getSolarHeaterIds = function () {
         })
     })
 };
+
+AllocatorDAL.getDataOfId = function (sId) {
+    //console.log("value sent: ", sId);
+    return connection.getConnection().then(function (db) {
+        return db.collection('solarHeaterAlcon').findOne({ "solarHeaterId": sId }).then(function (data) {
+            return SolarHeater.toObject(data);
+        })
+    })
+};
  
 module.exports = AllocatorDAL;
