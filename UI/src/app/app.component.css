@@ -1,0 +1,13 @@
+
+
+.grp {
+    display: flex;
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+.nav-item {
+    margin-left: 30px;
+}
