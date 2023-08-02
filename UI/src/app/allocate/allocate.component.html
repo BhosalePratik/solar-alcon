@@ -1,1 +1,52 @@
-<p>allocate works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <div class="header">
+                    <h3>Solar Heater Allocator</h3>
+                </div>
+                <div>
+                    <form [formGroup]="allocateForm" (ngSubmit)="register()">
+                        <div class="form-group mb-3">
+                            <label for="distributorName" class="mb-1">Distributor Name</label>
+                            <span class="text-danger">*</span>
+                            <input type="text" class="form-control" formControlName="distributorName" id="distributorName">
+                            <span id="distributorNameError" class="text-danger" *ngIf="allocateForm.controls.distributorName.errors?.required && allocateForm.controls.distributorName.dirty">This field is mandatory!</span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="purchaseDate" class="mb-1">Purchase Date</label>
+                            <span class="text-danger">*</span>
+                            <input type="date" class="form-control" formControlName="purchaseDate" id="purchaseDate">
+                            <span id="purchaseDateError" class="text-danger" *ngIf="allocateForm.controls.purchaseDate.errors?.required && allocateForm.controls.purchaseDate.dirty">This field is mandatory!</span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="installationDate" class="mb-1">Installation Date</label>
+                            <span class="text-danger">*</span>
+                            <input type="date" class="form-control" formControlName="installationDate" id="installationDate">
+                            <span id="installationDateError" class="text-danger" *ngIf="allocateForm.controls.installationDate.errors?.required && allocateForm.controls.installationDate.dirty">This field is mandatory!</span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="customerId" class="mb-1">Customer Id</label>
+                            <span class="text-danger">*</span>
+                            <input type="number" class="form-control" formControlName="customerId" id="customerId">
+                            <span id="customerIdError" class="text-danger" *ngIf="allocateForm.controls.customerId.errors?.required && allocateForm.controls.customerId.dirty">This field is mandatory!</span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <button class="btn btn-primary" type="submit">Register</button>
+                        </div>
+                    </form>
+                    <div class="text-success" *ngIf="successMsg">
+                        {{successMsg}}
+                    </div>
+                    <div class="text-danger" *ngIf="errorMsg">
+                        {{errorMsg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
