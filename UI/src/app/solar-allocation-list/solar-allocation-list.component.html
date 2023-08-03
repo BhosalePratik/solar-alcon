@@ -1,1 +1,44 @@
-<p>solar-allocation-list works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Solar Heater Bookings
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="">Please select Heater Id below:</label>
+                        <select name="" id="" class="form-control" [(ngModel)]="selectedId" (change)="displaySelected()">
+                            <option [value]="id" *ngFor="let id of solarHeaterIds">{{id}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="selectedSolar">
+                        <div>
+                            <b><span>Details of Solar Id:  {{selectedSolar.solarHeaterId}}</span></b>
+                        </div>
+                        <div>
+                            <table class="table" border="">
+                                <thead>
+                                    <tr>
+                                        <th>Customer Id</th>
+                                        <th>Distributor Name</th>
+                                        <th>Purchase Date</th>
+                                        <th>Installation Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{selectedSolar.customerId}}</td>
+                                        <td>{{selectedSolar.distributorName}}</td>
+                                        <td>{{selectedSolar.purchaseDate}}</td>
+                                        <td>{{selectedSolar.installationDate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
