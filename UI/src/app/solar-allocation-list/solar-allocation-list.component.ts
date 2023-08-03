@@ -16,14 +16,20 @@ export class SolarAllocationListComponent implements OnInit {
   constructor(private allocation: SolarAllocationListService) { }
 
   ngOnInit(): void {
-
+    this.getAllIds();
   }
 
   displaySelected() {
-
+    this.allocation.getSolarHeaterById(this.selectedId).subscribe(
+      success => {this.selectedSolar = success},
+      error => {this.errorMsg = error.message}
+    )
   }
 
   getAllIds() {
-    
+    this.allocation.getAllocations().subscribe(
+      success => {this.solarHeaterIds = success},
+      error => {this.errorMsg = error.message}
+    )
   }
 }
