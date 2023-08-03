@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AllocateServiceService } from './allocate-service.service';
 
 @Component({
   selector: 'app-allocate',
@@ -12,7 +13,7 @@ export class AllocateComponent implements OnInit {
   errorMsg: string;
   successMsg: string;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private allocateService: AllocateServiceService) { }
 
   ngOnInit(): void {
     this.allocateForm = this.fb.group({
@@ -25,7 +26,10 @@ export class AllocateComponent implements OnInit {
 
   register() {
     this.errorMsg = this.successMsg = "";
-    
+    this.allocateService.getData(this.allocateForm.value).subscribe(
+      success => {this.successMsg = success.message},
+      error => {this.errorMsg = error.message}
+    )
   }
 
 }
