@@ -1,33 +1,43 @@
-var mongojs = require('mongojs');
-var db = mongojs('solarAlconDB');
+const mongoose = require('mongoose');
+const customerSchema = require('./public/schemas/customerSchema');
+mongoose.connect('mongodb://localhost/greenDB', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const testModel = mongoose.model('Test', mongoose.Schema(customerSchema), 'customer');
+
+const initialTestData = [
+    {
+        name: 'Jatin Pawar',
+        emailId: 'jatin.pawar@alpine.com',
+        password: 'jatin@10001',
+        customerId: 10001,
+        contactNumber: 9890632153,
+        address: {
+            street: '6th cross lane',
+            locality: 'anand nagar',
+            city: 'pune',
+            state: 'MH',
+            pin: 415562
+        }
+    },
+    {
+        name: 'Dhruv Rathod',
+        emailId: 'dhruv.rathod@alpine.com',
+        password: 'dhruv@10002',
+        customerId: 10002,
+        contactNumber: 9890639236,
+        address: {
+            street: '6th upper lane',
+            locality: 'songram',
+            city: 'jaipur',
+            state: 'RJ',
+            pin: 125862
+        }
+    }
+];
 
 
-
-db.customer.insert(
-    [
-        {"customerId": 1001, "name": 'Dolly', "location": 'Mysore'},
-        {"customerId": 1002, "name": 'Jatin', "location": 'Mysore'},
-        {"customerId": 1003, "name": 'Unlord', "location": 'Tumkur'},
-        {"customerId": 1004, "name": 'Virna', "location": 'Bangalore'},
-        {"customerId": 1005, "name": 'Allegi', "location": 'Bangalore'},
-    ]
-);
-
-
-
-var today = new Date();
-var year = today.getFullYear();
-var month = today.getMonth();
-var day = today.getDate();
-today = today.setUTCHours(0, 0, 0, 0);
-
-
-db.solarHeaterAlcon.insert(
-    [
-        {solarHeaterId: 2001, distributorName: 'Suntek', purchaseDate: new Date(year, month+2, day).toLocaleDateString(), installationDate: new Date(year, month+2, day+3).toLocaleDateString(), customerId: 1002},
-        {solarHeaterId: 2002, distributorName: 'A4solar', purchaseDate: new Date(year, month+3, day).toLocaleDateString(), installationDate: new Date(year, month+3, day+7).toLocaleDateString(), customerId: 1001},
-        {solarHeaterId: 2003, distributorName: 'Supremesolar', purchaseDate: new Date(year, month+1, day).toLocaleDateString(), installationDate: new Date(year, month+1, day+3).toLocaleDateString(), customerId: 1003},
-        {solarHeaterId: 2004, distributorName: 'Suntek', purchaseDate: new Date(year, month+2, day+5).toLocaleDateString(), installationDate: new Date(year, month+2, day+8).toLocaleDateString(), customerId: 1004},
-        {solarHeaterId: 2005, distributorName: 'A4solar', purchaseDate: new Date(year, month+3, day+9).toLocaleDateString(), installationDate: new Date(year, month+3, day+12).toLocaleDateString(), customerId: 1005},
-    ]
-);
+testModel.insertMany(initialTestData).then(() => {
+    console.log('insertion successful');
+}).catch((err) => {
+    console.error('error while inserting:', err);
+});
