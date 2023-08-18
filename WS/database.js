@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const customerSchema = require('./public/schemas/customerSchema');
-mongoose.connect('mongodb://localhost/greenDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.createConnection('mongodb://localhost/greenDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const testModel = mongoose.model('Test', mongoose.Schema(customerSchema), 'customer');
 

@@ -1,32 +1,32 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/solarAlconDB";
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/solarAlconDB";
 
-var connection = {};
+// var connection = {};
 
-connection.getConnection = function() {
-    return MongoClient.connect(url).then(function(database) {
-        return database.db();
-    }).catch(function(error) {
-        throw new Error("Could not connect to Database");
-    })
-}
+// connection.getConnection = function() {
+//     return MongoClient.connect(url).then(function(database) {
+//         return database.db();
+//     }).catch(function(error) {
+//         throw new Error("Could not connect to Database");
+//     })
+// }
 
-module.exports = connection;
+// module.exports = connection;
 
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// const dbURI = 'mongodb://localhost:27017/your-database-name';
+const dbURI = 'mongodb://localhost:27017/greenDB';
 
-// mongoose.connect(dbURI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-// const db = mongoose.connection;
+const db = mongoose.connection;
 
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-// db.once('open', () => {
-//   console.log('Connected to MongoDB database');
-// });
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB database');
+});
 
-// module.exports = db;
+module.exports = db;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SolarAllocationListService } from './solar-allocation-list.service';
-import { SolarHeater } from '../shared/SolarHeater';
+import { SolarHeater } from '../shared/constants/SolarHeater';
 
 @Component({
   selector: 'app-solar-allocation-list',

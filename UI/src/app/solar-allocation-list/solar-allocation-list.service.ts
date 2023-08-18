@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SolarHeater } from '../shared/SolarHeater';
+import { SolarHeater } from '../shared/constants/SolarHeater';
 
 @Injectable({
   providedIn: 'root'
