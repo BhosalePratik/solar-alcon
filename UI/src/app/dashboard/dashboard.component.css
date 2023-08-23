@@ -18,3 +18,8 @@
 .img-container {
     border-top: 4px solid #39395f;
 }
+
+.header-text {
+    text-align: center;
+    font-weight: bold;
+}

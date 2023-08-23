@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { LoginComponent } from './login/login.component';
 
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

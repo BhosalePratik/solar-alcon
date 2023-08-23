@@ -14,7 +14,8 @@ import { ProductsComponent } from './components/products/products.component';
     CommonModule
   ],
   exports: [
-    CompanylogoComponent
+    CompanylogoComponent,
+    ProductsComponent
   ]
 })
 export class SharedModule { }
