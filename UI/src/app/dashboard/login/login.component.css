@@ -1,0 +1,23 @@
+
+
+.box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.form-group {
+    margin-top: 15px;
+}
+
+.field-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: grey;
+}
+
+.btn-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
